@@ -1,0 +1,37 @@
+# Mac file to ignore
+.DS_Store
+
+# Compressed files from other work
+*.zip
+*.gz
+
+# LaTeX  auxiliary files and output
+*.log
+*.out
+*.aux
+*.pdf
+
+# Java files
+*.class
+*.jar
+
+# Eclipse files
+.metadata
+.classpath
+.project
+.settings/
+bin/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+
+# Maven target dir
+target/
+
+# Apache Apex files
+*.apa
+tmp
+*.tmp

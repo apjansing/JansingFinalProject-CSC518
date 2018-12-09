@@ -1,0 +1,327 @@
+% template for papers with a title page
+% see dgstpp.sty for title page info
+% format: latex
+% last changed: 1 Apr 2015
+
+\documentclass[11 pt]{IEEEtran}
+
+% standard math packages
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{scrextend}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usetikzlibrary{arrows, shapes, plothandlers}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=bash,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breakatwhitespace=true,
+  tabsize=3,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+
+% Phil Parker's DGS packages, some modified
+\usepackage{remexpp,pprroof,dgstpp}
+
+% other packages
+\usepackage{setspace}
+%\usepackage{hyperref,color}
+
+% "fancy" font
+\usepackage{fourier}
+\usepackage[T1]{fontenc}
+   
+% make reference header the right font size
+\renewcommand\refname{\Large References}
+   
+% theorems, remarks, etc using Phil Parker's "remexpp.sty"
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newremark{definition}[theorem]{Definition}
+\newremark{example}[theorem]{Example}
+\newremark{remark}[theorem]{Remark} 
+
+% make rsfs, TeX \cal, and Euler script *all* available
+\usepackage{mathrsfs}
+\let\rscr=\mathscr
+\let\mathscr=\relax
+\let\mcal=\mathcal
+\usepackage{eucal}
+\let\escr=\mathcal
+\let\mathcal=\relax
+
+% commutative diagrams with XY-pic
+\usepackage[all]{xy}
+\SelectTips{cm}{}
+
+\arraycolsep .2em
+   
+% new commands
+\renewcommand{\a}{\alpha}
+\newcommand{\Aut}[1]{\textrm{Aut}(#1)}
+\newcommand{\B}{\rscr{B}}
+\newcommand{\br}[2]{\left[#1,#2\right]}
+\newcommand{\bre}{\br{\ }{\,}}
+\newcommand{\ddg}{\ddot{\g}}
+\newcommand{\dg}{\dot{\g}}
+\newcommand{\DGS}{D{\kern-.375em}G{\kern-.2em}S}
+\newcommand{\ds}{\oplus}
+\newcommand{\eB}{\escr{B}}
+\newcommand{\eH}{\escr{H}}
+\newcommand{\eI}{\escr{I}}
+\newcommand{\eV}{\escr{V}}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\newcommand{\h}{\lal{h}}
+\renewcommand{\H}{\rscr{H}}
+\newcommand{\hp}{\h_{2p + 1}}
+\newcommand{\iso}{\cong}
+\newcommand{\lag}{\mathfrak{g}}
+\newcommand{\lal}[1]{\mathfrak{#1}}
+\newcommand{\n}{\lal{n}}
+\newcommand{\pplus}{+\mspace{-10 mu}+}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rS}{\rscr{S}}
+\renewcommand{\span}[1]{[\mspace{-3.25 mu}[ #1 ]\mspace{-3.25 mu}]}
+\newcommand{\surj}{\rightarrow\kern-.82em\rightarrow}
+\newcommand{\tQ}{\widetilde{Q}}
+\renewcommand{\v}{\lal{v}}
+\newcommand{\V}{\rscr{V}}
+\newcommand{\z}{\lal{z}}
+%%Alex's defined commands%%
+\newcommand{\adx}{ad$_x$ }
+\newcommand{\ady}{ad$_y$ }
+\newcommand{\adz}{ad$_z$ }
+\newcommand{\fj}{\mathfrak{j}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fz}{\mathfrak{z}}
+\newcommand{\fv}{\mathfrak{v}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\FF}{\mathbb{F}}
+
+\makeatletter
+\newcommand{\ad}[1]{\mathop{\operator@font ad}\nolimits_{#1}}
+\makeatother
+
+% show labels in margin (must be last package added)
+\usepackage{showlabels}
+
+% input information for the title page here:
+\preprint{}
+\title{Apache Apex}
+\author{Alexander Jansing}
+\address{
+   Computer Science Department\\
+   State University of New York,\\
+   Polytechnic Institute\\
+   Utica, NY 13502\\
+   USA\\
+   \textsf{jansina@sunyit.edu}
+}
+\date{\today}
+\abstract{
+Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline \cite{WEISE}. The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018\cite{WIKI}\cite{DATANAMI}.
+}
+\msc{}{}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+\subsection{Apache Apex and Mahlar}
+Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline \cite{WEISE}. The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018\cite{WIKI}\cite{DATANAMI}. The last release of Apex was put out on April $27^{th}$ of the same year; which wasn't that long ago as of the writing of this paper, but looking at the related github repositories doesn't do much to inspire confidence in future releases.
+
+Apex comes with Malhar, a codec library of operators used to enable users to speed up their work and in a variety of languages (Java, JavaScript, Python, R, Ruby). Malhar operations are based off of templates and can be easily extended to perform the actions you need. Additionally, Malhar allows the developer to change the properties of an operator at runtime, so the application doesn't need to be brought offline\cite{MALHAR}.
+
+\subsection{Structure of the Paper}
+In this preliminary report, I will quickly go over what I have done:
+\begin{enumerate}
+\item to research the topic,
+\item with the Apache Apex framework,
+\item what I think the framework is good for and how it relates to our coursework so far,
+\item what I think I can do with the software in the remainder of the semester,
+\item and any work that is either a stretch goal or will be set aside for future projects.
+\end{enumerate}
+ 
+
+\section{Research}
+Whenever researching a piece of technology to use, especially when software under Apache Software Foundation (\emph{ASF}, plenty of documentation is available on the project's site. Usually, there is enough information there to get started in understanding how and why to use a particular product. Usually one should look beyond the product's page when the software isn't under the ASF; as many companies are looking to sell a license.
+
+In the case of this project, I used the Apache Apex project page\cite{APEX}, the provided ReadTheDocs pages\cite{APEXrtd_dt}\cite{APEXrtd_apache}\cite{MALHAR}, a presentation from a DataTorrent employee, Thomas Weise\cite{WEISE}, Wikipedia and its references\cite{WIKI}\cite{DATANAMI}.
+ 
+ \section{Using Apex}
+I have been walking through the Apache Apex \textit{Development Setup} \cite{APEXrtd_apache}. The code to the \textit{Hello World} can be seen in subsubsections 1 and 2  of \textit{Code Snippets} subsection of the Appendix. I still need to understand how the API strings everything together. I've seen where most methods are within the project, but I'm not sure where they are called.
+
+\section{Semester Work}
+I want to be able to run many map-reduce jobs on arbitrary files over the bytes or characters.
+\textit{Example}:
+$$
+\begin{array}{c|c}
+Text & MapReduce\\
+\hline
+fooxbar fooybar & \begin{array}{cc}
+o & 4 \\
+foo & 2 \\
+bar & 2 \\
+fo & 2 \\
+oo & 2 \\
+ba & 2 \\
+ar & 2 \\
+f & 2 \\
+b & 2 \\
+\vdots & \vdots \\
+ar & 1 \\
+x & 1 \\
+y & 1
+\end{array}
+\end{array}
+$$
+
+\section{Stretch Goals and Future Work}
+After having the shingled map-reduction I want to see if I can run series of replacements to compress the arbitrary file.\\
+\textit{Example}:
+$$
+\begin{array}{c|c}
+Text & Compression\\
+\hline
+fooxbar fooyzbar abc& \v \z \v yz\z abc\\
+\v x\z \v yz\z abc & \h x; \h yz;abc\\
+\end{array}
+$$
+In the last step, I can see that needing a character to outline the $\h$ compression doesn't result in less characters from the previous step, but it's a start.
+
+\newpage
+\section{Appendix}
+ 
+\subsection{Code snippets}
+\begin{enumerate}
+\item Start HDFS, Yarn, and Apex Docker
+\begin{lstlisting}
+#! /bin/bash
+cd /opt/hadoop
+sbin/start-dfs.sh
+sbin/start-yarn.sh
+
+# https://hub.docker.com/r/apacheapex/sandbox/
+docker pull apacheapex/sandbox
+docker run -it --name=apex-sandbox -p 50070:50070 -p 8089:8088 apacheapex/sandbox
+\end{lstlisting}
+
+ \item Apex Hello World
+\begin{lstlisting}
+mvn archetype:generate \
+ -DarchetypeGroupId=org.apache.apex \
+ -DarchetypeArtifactId=apex-app-archetype -DarchetypeVersion=RELEASE \
+ -DgroupId=com.example -Dpackage=com.example.myapexapp -DartifactId=myapexapp \
+ -Dversion=1.0-SNAPSHOT
+cd myapexapp
+mvn clean package -DskipTests
+apex
+apex> launch -local myapexapp-1.0-SNAPSHOT.apa 
+hello world: 0.807589002558217
+hello world: 0.1242663446047122
+hello world: 0.38127930226782014
+hello world: 0.28364680766046435
+hello world: 0.07831388099025127
+hello world: 0.8424820469853438
+\end{lstlisting}
+ \end{enumerate}
+
+
+ \subsection{Source locations}
+ 
+ \subsubsection{Apex Documentations}
+ \begin{enumerate}
+ \item[] \url{http://apex.apache.org/docs/apex/apex_development_setup/#creating-new-apex-project}
+ \end{enumerate}
+
+ \subsubsection{Github Repositories}
+ \begin{enumerate}
+	\item[] \url{https://github.com/apache/apex-core}
+	\item[] \url{https://github.com/apache/apex-malhar}
+	\item[] \url{https://github.com/apache/apex-site}
+ \end{enumerate}
+
+\subsubsection{Apache Apex Downloads}
+\begin{enumerate}
+	\item[] \url{http://apex.apache.org/downloads.html}
+	\item[] \url{https://hub.docker.com/r/apacheapex/sandbox/}
+\end{enumerate}
+  
+\begin{thebibliography}{99}
+\bibitem{APEX}
+Foundation, A. (2018). Apache Apex. [online] Apex.apache.org. Available at: \url{https://apex.apache.org/} [Accessed 5 Nov. 2018].
+
+\bibitem{WIKI}
+En.wikipedia.org. (2018). Apache Apex. [online] Available at: \url{https://en.wikipedia.org/wiki/Apache_Apex [Accessed 10 Nov. 2018]}.
+
+\bibitem{WEISE}
+Weise, T. (2016). Architectual Comparison of Apache Apex and Spark Streaming. [online] Available at: \url{https://www.slideshare.net/ApacheApex/architectual-comparison-of-apache-apex-and-spark-streaming} [Accessed 10 Nov. 2018].
+
+\bibitem{APEXrtd_dt}
+Dt-docs.readthedocs.io. (2018). Beginner's Guide - DataTorrent Documentation. [online] \url{Available at: https://dt-docs.readthedocs.io/en/latest/beginner/} [Accessed 10 Nov. 2018].
+
+\bibitem{APEXrtd_apache}
+Apex.apache.org. (2018). Apache Apex Documentation. [online] Available at: \url{http://apex.apache.org/docs/apex/} [Accessed 10 Nov. 2018].
+
+\bibitem{MALHAR}
+Apex.apache.org. (2018). Apache Apex Malhar Documentation. [online] Available at: \url{http://apex.apache.org/docs/malhar/} [Accessed 10 Nov. 2018].
+
+\bibitem{DATANAMI}
+Leopold, G. (2018). DataTorrent, Stream Processing Startup, Folds. [online] Datanami. Available at: \url{https://www.datanami.com/2018/05/08/datatorrent-stream-processing-startup-folds/} [Accessed 10 Nov. 2018].
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
