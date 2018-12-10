@@ -173,58 +173,6 @@
          </executions>
        </plugin>
 
-      <!-- generate javdoc -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <!-- generate xml javadoc -->
-          <execution>
-            <id>xml-doclet</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>javadoc</goal>
-            </goals>
-            <configuration>
-              <doclet>com.github.markusbernhardt.xmldoclet.XmlDoclet</doclet>
-              <additionalparam>-d ${project.build.directory}/generated-resources/xml-javadoc -filename ${project.artifactId}-${project.version}-javadoc.xml</additionalparam>
-              <useStandardDocletOptions>false</useStandardDocletOptions>
-              <docletArtifact>
-                <groupId>com.github.markusbernhardt</groupId>
-                <artifactId>xml-doclet</artifactId>
-                <version>1.0.4</version>
-              </docletArtifact>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Transform xml javadoc to stripped down version containing only class/interface comments and tags-->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>xml-maven-plugin</artifactId>
-        <version>1.0</version>
-        <executions>
-          <execution>
-            <id>transform-xmljavadoc</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>transform</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <transformationSets>
-            <transformationSet>
-              <dir>${project.build.directory}/generated-resources/xml-javadoc</dir>
-              <includes>
-                <include>${project.artifactId}-${project.version}-javadoc.xml</include>
-              </includes>
-              <stylesheet>XmlJavadocCommentsExtractor.xsl</stylesheet>
-              <outputDir>${project.build.directory}/generated-resources/xml-javadoc</outputDir>
-            </transformationSet>
-          </transformationSets>
-        </configuration>
-      </plugin>
       <!-- copy xml javadoc to class jar -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
