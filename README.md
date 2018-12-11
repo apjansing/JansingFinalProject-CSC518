@@ -4,9 +4,9 @@
 Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline [[3]](#WEISE). The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018 [[2]](#WIKI) [[7]](#DATANAMI).
 
 ## Resources
-
  * [Docker Hub](https://hub.docker.com/r/apjansing/apex-maven/)
 
+## Bibliography
 <a name="APEX">[1]</a>
 Foundation, A. (2018). Apache Apex. [online] Apex.apache.org. Available at: https://apex.apache.org/ [Accessed 5 Nov. 2018].
 
