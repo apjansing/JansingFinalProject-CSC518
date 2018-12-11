@@ -30,9 +30,20 @@ Once the Maven build finishes, you can see that the tests generated a `tmp` fold
 Notice that the words _monstrous_, _been_, and other words repeatedly show up in separate jsons. That is as a result of how Apache Apex streams data and outputs the results of the DAG (Directed Acyclic Graph) object is saved after a time window.
 
 ## Resources
- * [Docker Hub](https://hub.docker.com/r/apjansing/apex-maven/)
+### Apex Documentations
+* [creating-new-apex-project](http://apex.apache.org/docs/apex/apex_development_setup/#creating-new-apex-project)
 
-## Bibliography
+### Github Repositories
+* [apex-core](https://github.com/apache/apex-core)
+* [apex-malhar](https://github.com/apache/apex-malhar)
+* [apex-site](https://github.com/apache/apex-site)
+
+### Apache Apex Downloads
+* [Apex downloads](http://apex.apache.org/downloads.html)
+* [Apex-Sandbox Image](https://hub.docker.com/r/apacheapex/sandbox/)
+ * [Apex Dev Image](https://hub.docker.com/r/apjansing/apex-maven/)
+
+### Bibliography
 <a name="APEX">[1]</a>
 Foundation, A. (2018). Apache Apex. [online] Apex.apache.org. Available at: https://apex.apache.org/ [Accessed 5 Nov. 2018].
 
