@@ -49,9 +49,9 @@ Notice that the words _monstrous_, _been_, and other words repeatedly show up in
 <a name="APEX">[1]</a>
 Foundation, A. (2018). Apache Apex. [online] Apex.apache.org. Available at: https://apex.apache.org/ [Accessed 5 Nov. 2018].
 
-<a name="WIKI">[2]</a>: En.wikipedia.org. (2018). Apache Apex. [online] Available at: https://en.wikipedia.org/wiki/Apache_Apex [Accessed 10 Nov. 2018].
+<a name="WIKI">[2]</a> En.wikipedia.org. (2018). Apache Apex. [online] Available at: https://en.wikipedia.org/wiki/Apache_Apex [Accessed 10 Nov. 2018].
 
-<a name="WEISE">[3]</a>Weise, T. (2016). Architectual Comparison of Apache Apex and Spark Streaming. [online] Available at: https://www.slideshare.net/ApacheApex/architectual-comparison-of-apache-apex-and-spark-streaming [Accessed 10 Nov. 2018].
+<a name="WEISE">[3]</a> Weise, T. (2016). Architectual Comparison of Apache Apex and Spark Streaming. [online] Available at: https://www.slideshare.net/ApacheApex/architectual-comparison-of-apache-apex-and-spark-streaming [Accessed 10 Nov. 2018].
 
 <a name="APEXrtd_dt">[4]</a>
 Dt-docs.readthedocs.io. (2018). Beginner's Guide - DataTorrent Documentation. [online] Available at: https://dt-docs.readthedocs.io/en/latest/beginner/ [Accessed 10 Nov. 2018].
