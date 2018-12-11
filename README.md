@@ -1,4 +1,4 @@
-# An Survey of Apache Apex
+# A Survey of Apache Apex
 
 ## Abstract
 Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline [[3]](#WEISE). The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018 [[2]](#WIKI) [[7]](#DATANAMI).
