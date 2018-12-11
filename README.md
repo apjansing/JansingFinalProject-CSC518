@@ -17,7 +17,7 @@ cd apex-maven/src/docker
 ### Running MapReduce
 After the `apex` docker container is started,
 ```
-cd cd src/MapReduce
+cd src/MapReduce
 mvn clean install
 ```
 
