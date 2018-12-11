@@ -9,8 +9,8 @@ This project is designed to help other developers write their own Apache Apex ap
 ### Starting Docker Container
 To start the `apex` docker container,
 ```
-git clone git@github.com:apjansing/JansingFinalProject-CSC518.git
-cd src/docker
+git@github.com:apjansing/apex-maven.git
+cd apex-maven/src/docker
 ./pull_and_start_dev_apex_docker.sh
 ```
 
