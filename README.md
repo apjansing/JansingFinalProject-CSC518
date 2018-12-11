@@ -19,6 +19,16 @@ cd cd src/MapReduce
 mvn clean install
 ```
 
+### Output
+Once the Maven build finishes, you can see that the tests generated a `tmp` folder with an `output*` file. The `output*` file will have contents that look like,
+```
+{monstrous=1, allah=1, xlv=1, xxxvii=1, bag=1, dutch=1, xxiv=1, vii=3,...},
+{... cheerless=1, monstrous=4, flinty=1, been=12, gaping=1, ...},
+{... ticking=1, monstrous=1, been=64, mostly=2, ...},
+{... account=5, monstrous=6, been=60, unquestion=1, ...}
+```
+Notice that the words _monstrous_, _been_, and other words repeatedly show up in separate jsons. That is as a result of how Apache Apex streams data and outputs the results of the DAG (Directed Acyclic Graph) object is saved after a time window.
+
 ## Resources
  * [Docker Hub](https://hub.docker.com/r/apjansing/apex-maven/)
 
