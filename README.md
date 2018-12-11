@@ -3,6 +3,22 @@
 ## Abstract
 Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline [[3]](#WEISE). The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018 [[2]](#WIKI) [[7]](#DATANAMI).
 
+## Example
+### Starting Docker Container
+To start the `apex` docker container,
+```
+git clone git@github.com:apjansing/JansingFinalProject-CSC518.git
+cd src/docker
+./pull_and_start_dev_apex_docker.sh
+```
+
+### Running MapReduce
+After the `apex` docker container is started,
+```
+cd cd src/MapReduce
+mvn clean install
+```
+
 ## Resources
  * [Docker Hub](https://hub.docker.com/r/apjansing/apex-maven/)
 
