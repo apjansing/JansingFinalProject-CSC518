@@ -31,12 +31,12 @@ Notice that the words _monstrous_, _been_, and other words repeatedly show up in
 
 ## Resources
 ### Apex Documentations
-* [creating-new-apex-project](http://apex.apache.org/docs/apex/apex_development_setup/#creating-new-apex-project)
+* [Creating New Apex Project](http://apex.apache.org/docs/apex/apex_development_setup/#creating-new-apex-project)
 
 ### Github Repositories
-* [apex-core](https://github.com/apache/apex-core)
-* [apex-malhar](https://github.com/apache/apex-malhar)
-* [apex-site](https://github.com/apache/apex-site)
+* [Apex core](https://github.com/apache/apex-core)
+* [Apex malhar](https://github.com/apache/apex-malhar)
+* [Apex site](https://github.com/apache/apex-site)
 
 ### Apache Apex Downloads
 * [Apex downloads](http://apex.apache.org/downloads.html)
