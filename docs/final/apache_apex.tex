@@ -152,6 +152,8 @@
 \date{\today}
 \abstract{
 Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline \cite{WEISE}. The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018\cite{WIKI}\cite{DATANAMI}.
+
+This project is designed to help other developers write their own Apache Apex applications by providing an docker image with Apex, JDK8, and Maven installed. The start-up script provided can be easily changed so that others can pass their project directory as a volume to a container and rapid testing can be performed.
 }
 \msc{}{}
 
@@ -159,11 +161,23 @@ Apache Apex is Hadoop YARN-native framework for building distributed application
 \maketitle
 
 
+% Your paper must be structured properly (with numbered titled sections), detailing
+%   the main focus of the project (the topic)
+%   the relevance of the topic to big data (whether or not your topic is directly related to Spark,
+%  and Hadoop)
+%   the challenges in using the software relevant to your topic (installation, etc.)
+%   the work you have actually done for the project (code, etc.)
+%   your self-evaluation (what you managed to accomplish and what you failed to complete)
+%   the references you have used (books, papers, web sites, etc.); remember that you must
+%  give proper credits (i.e. proper references) to work you use that is not your own.
+
 \section{Introduction}
 \subsection{Apache Apex and Mahlar}
 Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline \cite{WEISE}. The Apex project was mainly been driven by the company DataTorrent. DataTorrent shut its doors back in May of 2018\cite{WIKI}\cite{DATANAMI}. The last release of Apex was put out on April $27^{th}$ of the same year; which wasn't that long ago as of the writing of this paper, but looking at the related github repositories doesn't do much to inspire confidence in future releases.
 
 Apex comes with Malhar, a codec library of operators used to enable users to speed up their work and in a variety of languages (Java, JavaScript, Python, R, Ruby). Malhar operations are based off of templates and can be easily extended to perform the actions you need. Additionally, Malhar allows the developer to change the properties of an operator at runtime, so the application doesn't need to be brought offline\cite{MALHAR}.
+
+This project is designed to help other developers write their own Apache Apex applications by providing an docker image with Apex, JDK8, and Maven installed. The start-up script provided can be easily changed so that others can pass their project directory as a volume to a container and rapid testing can be performed.
 
 \subsection{Structure of the Paper}
 In this preliminary report, I will quickly go over what I have done:
@@ -182,80 +196,37 @@ Whenever researching a piece of technology to use, especially when software unde
 In the case of this project, I used the Apache Apex project page\cite{APEX}, the provided ReadTheDocs pages\cite{APEXrtd_dt}\cite{APEXrtd_apache}\cite{MALHAR}, a presentation from a DataTorrent employee, Thomas Weise\cite{WEISE}, Wikipedia and its references\cite{WIKI}\cite{DATANAMI}.
  
  \section{Using Apex}
-I have been walking through the Apache Apex \textit{Development Setup} \cite{APEXrtd_apache}. The code to the \textit{Hello World} can be seen in subsubsections 1 and 2  of \textit{Code Snippets} subsection of the Appendix. I still need to understand how the API strings everything together. I've seen where most methods are within the project, but I'm not sure where they are called.
+TODO
 
-\section{Semester Work}
-I want to be able to run many map-reduce jobs on arbitrary files over the bytes or characters.
-\textit{Example}:
-$$
-\begin{array}{c|c}
-Text & MapReduce\\
-\hline
-fooxbar fooybar & \begin{array}{cc}
-o & 4 \\
-foo & 2 \\
-bar & 2 \\
-fo & 2 \\
-oo & 2 \\
-ba & 2 \\
-ar & 2 \\
-f & 2 \\
-b & 2 \\
-\vdots & \vdots \\
-ar & 1 \\
-x & 1 \\
-y & 1
-\end{array}
-\end{array}
-$$
-
-\section{Stretch Goals and Future Work}
-After having the shingled map-reduction I want to see if I can run series of replacements to compress the arbitrary file.\\
-\textit{Example}:
-$$
-\begin{array}{c|c}
-Text & Compression\\
-\hline
-fooxbar fooyzbar abc& \v \z \v yz\z abc\\
-\v x\z \v yz\z abc & \h x; \h yz;abc\\
-\end{array}
-$$
-In the last step, I can see that needing a character to outline the $\h$ compression doesn't result in less characters from the previous step, but it's a start.
 
 \newpage
 \section{Appendix}
  
-\subsection{Code snippets}
+\subsection{Code snippets and links}
 \begin{enumerate}
-\item Start HDFS, Yarn, and Apex Docker
-\begin{lstlisting}
-#! /bin/bash
-cd /opt/hadoop
-sbin/start-dfs.sh
-sbin/start-yarn.sh
+\item MapReduce - \url{https://github.com/apjansing/apex-maven/tree/master/src/MapReduce}
+\item apex-maven 
+\begin{enumerate}
+  \item \url{https://github.com/apjansing/apex-maven/blob/master/src/docker/Dockerfile}
+  \item \url{https://hub.docker.com/r/apjansing/apex-maven/}
+\end{enumerate}
 
-# https://hub.docker.com/r/apacheapex/sandbox/
-docker pull apacheapex/sandbox
-docker run -it --name=apex-sandbox -p 50070:50070 -p 8089:8088 apacheapex/sandbox
+\item pull\_and\_start\_dev\_apex\_docker.sh
+\begin{lstlisting}
+  #!/bin/bash
+  JANSING_PROJECT_HOME=`(git rev-parse --show-toplevel)`
+  JANSING_REPO_NAME=`(basename $JANSING_PROJECT_HOME)`
+  
+  docker pull apjansing/apex-maven
+  docker run -it --name=apex -v $JANSING_PROJECT_HOME:/home/apex/ $JANSING_REPO_NAME -p 50070:50070 -p 8089:8088 apex-maven
 \end{lstlisting}
 
- \item Apex Hello World
+ \item MapReduce Output
 \begin{lstlisting}
-mvn archetype:generate \
- -DarchetypeGroupId=org.apache.apex \
- -DarchetypeArtifactId=apex-app-archetype -DarchetypeVersion=RELEASE \
- -DgroupId=com.example -Dpackage=com.example.myapexapp -DartifactId=myapexapp \
- -Dversion=1.0-SNAPSHOT
-cd myapexapp
-mvn clean package -DskipTests
-apex
-apex> launch -local myapexapp-1.0-SNAPSHOT.apa 
-hello world: 0.807589002558217
-hello world: 0.1242663446047122
-hello world: 0.38127930226782014
-hello world: 0.28364680766046435
-hello world: 0.07831388099025127
-hello world: 0.8424820469853438
+  {monstrous=1, allah=1, xlv=1, xxxvii=1, bag=1, dutch=1, xxiv=1, vii=3,...},
+  {... cheerless=1, monstrous=4, flinty=1, been=12, gaping=1, ...},
+  {... ticking=1, monstrous=1, been=64, mostly=2, ...},
+  {... account=5, monstrous=6, been=60, unquestion=1, ...}
 \end{lstlisting}
  \end{enumerate}
 
@@ -269,6 +240,7 @@ hello world: 0.8424820469853438
 
  \subsubsection{Github Repositories}
  \begin{enumerate}
+  \item[] \url{https://github.com/apjansing/apex-maven}
 	\item[] \url{https://github.com/apache/apex-core}
 	\item[] \url{https://github.com/apache/apex-malhar}
 	\item[] \url{https://github.com/apache/apex-site}
