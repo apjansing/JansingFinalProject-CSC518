@@ -9,7 +9,7 @@
 *.log
 *.out
 *.aux
-*.pdf
+# *.pdf
 *.fdb_latexmk
 *.fls
 
