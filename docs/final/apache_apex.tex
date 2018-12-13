@@ -197,13 +197,15 @@ In the case of this project, I used the Apache Apex project page \cite{APEX}, th
 \subsection{Use Case}
 As was stated in the introduction, Apache Apex is Hadoop YARN-native framework for building distributed applications and applies native streaming to the data processing pipeline \cite{WEISE}. YARN-native means that applications developed using the Apache Apex API can be deployed directly onto an HDFS clustering using YARN without installing any new software \cite{WEISE2}.
 
+Apache Apex can be thought of as an alternative to Apache Spark for performing analytics. It appears that Apex was inspired, at least partially, by Spark as seen by its use of a \emph{DAGs} (Directed acyclic graphs) pattern of arranging code (see \ref{sec:overview}).
+
 Another of Apache Apex's lesser known features is that it supports automatic scaling with the demands placed upon itself \cite{WEISE2}. The ability to automatically scale an application up or down based on the current needs of a system is a great feature for any framework or application to have and it a major selling point for some other software out there, i.e. Cloud Foundry \cite{CF}.
 
 Apache Apex's primary use case seems to take advantage of an existing HDFS cluster, using YARN (Mesos support was never released \cite{APEX-JIRA}), to perform streaming analytics; i.e. training LSTMs (Long short-term memory neural networks) or reading data that continually streams in from a source.
 
 \section{Using Apex}
-\subsection{Quick Overview of the Apache Apex API}
-The Apache Apex API consists of two primary units; \emph{Operators} and \emph{DAGs} (Directed acyclic graphs). Operators are the most basic units of Apex applications and the vertices of the DAG. The DAG object the graph representation of the Apex application and describes how data streams in and out of Operators (\autoref{fig:apex-app})\cite{APEX-DOCS}.
+\subsection{Quick Overview of the Apache Apex API} \label{sec:overview}
+The Apache Apex API consists of two primary units; \emph{Operators} and DAG. Operators are the most basic units of Apex applications and the vertices of the DAG. The DAG object the graph representation of the Apex application and describes how data streams in and out of Operators (\autoref{fig:apex-app})\cite{APEX-DOCS}.
 
 \begin{figure}
   \includegraphics[scale=.4]{../images/apex-dag}
@@ -223,12 +225,14 @@ In addition of the basic word counting application, I expanded on the apex-sandb
 
 The apex-maven image uses apex-sandbox as a starting point and further includes JDK8, Maven, and the apex-malhar git repository, built; meaning that the Malhar library code is included in the image's \textsl{\textasciitilde/.m2/repository/}.
 
+\section{Conclusion}
 \subsection{Challenges}
-TODO
+Working with a new framework is always challenging. It gets easier the more frameworks you've been exposed to, but there is always a learning curve. Apache Apex follows this pattern. An overview of how Apex's applications was briefly explained in \ref{sec:overview}. More could have been learned in the pursuit of this project, but Apex's framework was much easier to understanding since I am familiar with reading the documentation associated with Apache Foundation project and Apex shares some of its DAG pattern with Spark.
+
 %   your self-evaluation (what you managed to accomplish and what you failed to complete)
 %   \item and finally a reflection on what was and was not accomplished.
-\section{Reflection}
-For this project, I had originally intended to perform a series of work count analytics and later translate those into byte-array counts; via the shingling of the bytes as they streamed into the source DAG vertex. Then, I wanted to find combinations of bytes that did not occur within a given file and replace the shingles to compress the file; providing the series of replacements after the EOF of the original file as a way to reverse the compression.
+\subsection{Reflection}
+For this project, I had originally intended to perform a series of work count analytics and later translate those into byte-array counts; via the shingling of the bytes as they streamed into the source Operation vertex. Then, I wanted to find combinations of bytes that did not occur within a given file and replace the shingles to compress the file; providing the series of replacements after the EOF of the original file as a way to reverse the compression.
 
 This project idea was a bit too ambitious to complete given that I needed to learn a whole new framework in the processing and the time provided. While running through the WordCount examples and trying to write my own Operators inspired by others I found (credited in code), I realized I wasn't going to be able to finish the project in time. With that in mind, I decided to get the word-count MapReduce DAG in working order and expand on the apex-sandbox Docker image provided by the Apache Apex project (\ref{sec:repos}) to create an image that developers could use to speed up testing of Apex applications.
 
